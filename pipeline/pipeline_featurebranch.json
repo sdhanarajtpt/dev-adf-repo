@@ -1,0 +1,45 @@
+{
+	"name": "pipeline_featurebranch",
+	"properties": {
+		"description": "this is created from feature branch",
+		"activities": [
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "param1",
+					"value": "20"
+				}
+			},
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"variables": {
+			"param1": {
+				"type": "String",
+				"defaultValue": "10"
+			}
+		},
+		"annotations": []
+	}
+}
